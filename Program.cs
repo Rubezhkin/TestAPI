@@ -1,4 +1,5 @@
 using Mappings;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,17 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .CreateLogger();
 
+builder.Host.ConfigureLogging(logging =>
+{
+    logging.AddSerilog();
+    logging.SetMinimumLevel(LogLevel.Information);
+})
+.UseSerilog();
 
 builder.Services.AddCors(options =>
 
