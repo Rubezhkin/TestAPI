@@ -1,10 +1,10 @@
-namespace TestAPI.Models;
+namespace Models;
 
 public class Address
 {
-	String FullAddress {get; set;}
-	String PostalCode {get; set;}
-	String Country {get; set;}
-	String District {get; set;}
-	String Region {get; set;}
+    public String FullAddress {get; set;}
+	public String PostalCode {get; set;}
+	public String Country {get; set;}
+	public String District {get; set;}
+	public String Region {get; set;}
 }
